@@ -6,441 +6,439 @@
 
   <title>M-PESA Dashboard</title>
 
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #101010;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    button,
+    a {
+      font-family: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* HEADER */
+
+    .header {
+      height: 70px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #111;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: #35b84a;
+    }
+
+    .menu {
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 50%;
+      background: #242424;
+      color: white;
+      font-size: 22px;
+    }
+
+    /* MAIN */
+
+    .container {
+      width: 100%;
+      max-width: 700px;
+      margin: auto;
+      padding: 15px 18px 100px;
+    }
+
+    /* BALANCE */
+
+    .balance-card {
+      background: #202020;
+      border-radius: 25px;
+      padding: 25px 20px;
+      min-height: 170px;
+      border-left: 4px solid #32b44a;
+      margin-bottom: 28px;
+    }
+
+    .balance-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #bdbdbd;
+      font-size: 14px;
+    }
+
+    .eye {
+      border: 0;
+      background: transparent;
+      font-size: 20px;
+    }
+
+    .balance {
+      margin-top: 14px;
+      font-size: 34px;
+      font-weight: 700;
+    }
+
+    .balance-label {
+      margin-top: 15px;
+      color: #999;
+      font-size: 13px;
+    }
+
+    /* SECTION */
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .section-title h2 {
+      font-size: 21px;
+    }
+
+    .view-all {
+      background: transparent;
+      border: 0;
+      color: #aaa;
+      font-size: 13px;
+    }
+
+    /* QUICK ACTIONS */
+
+    .quick-actions {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .quick-action {
+      min-height: 105px;
+      border-radius: 16px;
+      background: #202020;
+      border: 1px solid #292929;
+      color: white;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      transition: .2s;
+    }
+
+    .quick-action:active {
+      transform: scale(.96);
+    }
+
+    .quick-icon {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: #292929;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    .quick-action span {
+      font-size: 12px;
+      text-align: center;
+    }
+
+    /* FREQUENTS */
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      margin-bottom: 17px;
+    }
+
+    .tab {
+      border: 0;
+      background: #242424;
+      color: #aaa;
+      padding: 9px 17px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .tab.active {
+      background: #35b84a;
+      color: white;
+    }
+
+    .frequents {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+    }
+
+    .person {
+      min-width: 60px;
+      text-align: center;
+      color: #ccc;
+      font-size: 12px;
+    }
+
+    .avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      margin: auto auto 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #333;
+      border: 1px solid #444;
+      font-size: 18px;
+      color: white;
+    }
+
+    .add {
+      color: #35b84a;
+      font-size: 28px;
+    }
+
+    /* DEAL */
+
+    .deal {
+      background: linear-gradient(135deg, #202020, #292929);
+      border-radius: 22px;
+      padding: 24px;
+      margin-bottom: 30px;
+      border: 1px solid #333;
+    }
+
+    .deal-small {
+      color: #35b84a;
+      font-size: 11px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .deal h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .deal p {
+      color: #aaa;
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 17px;
+    }
+
+    .deal button {
+      border: 0;
+      background: #35b84a;
+      color: white;
+      border-radius: 20px;
+      padding: 10px 18px;
+      font-weight: bold;
+    }
+
+    /* FINANCES */
+
+    .finances {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+    }
+
+    .finance {
+      min-width: 170px;
+      background: #202020;
+      border-radius: 17px;
+      padding: 17px;
+    }
+
+    .finance-icon {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    .finance strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .finance small {
+      color: #999;
+    }
+
+    /* SCAN */
+
+    .scan {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 0;
+      border-radius: 30px;
+      background: #35b84a;
+      color: white;
+      padding: 15px 24px;
+      font-weight: bold;
+      box-shadow: 0 8px 25px rgba(0,0,0,.5);
+      z-index: 10;
+    }
+
+    /* TOAST */
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 85px;
+      transform: translateX(-50%);
+      background: #333;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      display: none;
+      z-index: 20;
+      font-size: 14px;
+    }
+
+    .toast.show {
+      display: block;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 500px) {
+
+      .header {
+        height: 62px;
+      }
+
+      .container {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .balance {
+        font-size: 30px;
+      }
+
+      .quick-actions {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 7px;
+      }
+
+      .quick-action {
+        min-height: 90px;
+        border-radius: 13px;
+      }
+
+      .quick-icon {
+        width: 39px;
+        height: 39px;
+        font-size: 19px;
+      }
+
+      .quick-action span {
+        font-size: 10px;
+      }
+
+      .deal h2 {
+        font-size: 20px;
+      }
+    }
+
+    @media (max-width: 360px) {
+
+      .quick-actions {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .quick-action {
+        min-height: 90px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- ================= HEADER ================= -->
-  <header class="top-header">
+  <!-- HEADER -->
 
-    <div class="brand">
-      <span class="brand-mark">M</span>
-      <span>M-PESA</span>
+  <header class="header">
+
+    <div class="logo">
+      <span>M</span>-PESA
     </div>
 
-    <button class="menu-btn" aria-label="Menu">
+    <button class="menu">
       ☰
     </button>
 
   </header>
 
 
-  <!-- ================= MAIN ================= -->
-  <main class="dashboard">
+  <main class="container">
 
-    <!-- Balance Card -->
+    <!-- BALANCE -->
+
     <section class="balance-card">
 
-      <div class="balance-header">
+      <div class="balance-top">
         <span>MPESA Balance</span>
 
-        <button
-          id="toggleBalance"
-          class="balance-toggle"
-          aria-label="Show or hide balance"
-        >
-          👁
+        <button class="eye" id="eye">
+          👁️
         </button>
       </div>
 
-      <div
-        id="balanceAmount"
-        class="balance-amount"
-      >
+      <div class="balance" id="balance">
         KSh 58.29
       </div>
 
-      <div class="balance-footer">
-        <span>Available Balance</span>
-        <span>•••• 5829</span>
+      <div class="balance-label">
+        Available Balance •••• 5829
       </div>
 
     </section>
 
 
-    <!-- ================= QUICK ACTIONS ================= -->
+    <!-- QUICK ACTIONS -->
+
     <section class="section">
 
-      <div class="section-heading">
+      <div class="section-title">
         <h2>Quick Actions</h2>
       </div>
 
       <div class="quick-actions">
 
         <!-- SEND MONEY -->
-        <a
-          href="send-money.html"
-          class="quick-action"
-        >
-          <div class="action-icon send-icon">
-            ↑
-          </div>
 
-          <span>Send Money</span>
-        </a>
-
-
-        <!-- BUY GOODS -->
-        <a
-          href="#"
-          class="quick-action"
-          onclick="showToast('Buy Goods selected'); return false;"
-        >
-          <div class="action-icon">
-            🛒
-          </div>
-
-          <span>Buy Goods</span>
-        </a>
-
-
-        <!-- PAY BILL -->
-        <a
-          href="#"
-          class="quick-action"
-          onclick="showToast('Pay Bill selected'); return false;"
-        >
-          <div class="action-icon">
-            📄
-          </div>
-
-          <span>Pay Bill</span>
-        </a>
-
-
-        <!-- WITHDRAW -->
-        <a
-          href="#"
-          class="quick-action"
-          onclick="showToast('Withdraw selected'); return false;"
-        >
-          <div class="action-icon">
-            ↓
-          </div>
-
-          <span>Withdraw</span>
-        </a>
-
-
-        <!-- AIRTIME -->
-        <a
-          href="#"
-          class="quick-action"
-          onclick="showToast('Airtime selected'); return false;"
-        >
-          <div class="action-icon">
-            📱
-          </div>
-
-          <span>Airtime</span>
-        </a>
-
-
-        <!-- LOANS -->
-        <a
-          href="#"
-          class="quick-action"
-          onclick="showToast('Loans selected'); return false;"
-        >
-          <div class="action-icon">
-            💰
-          </div>
-
-          <span>Loans</span>
-        </a>
-
-
-        <!-- TRANSACTIONS -->
-        <a
-          href="#"
-          class="quick-action"
-          onclick="showToast('Transactions selected'); return false;"
-        >
-          <div class="action-icon">
-            📊
-          </div>
-
-          <span>Transactions</span>
-        </a>
-
-
-        <!-- MORE -->
-        <a
-          href="#"
-          class="quick-action"
-          onclick="showToast('More options'); return false;"
-        >
-          <div class="action-icon">
-            ⋯
-          </div>
-
-          <span>More</span>
-        </a>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= FREQUENTS ================= -->
-    <section class="section">
-
-      <div class="section-heading">
-        <h2>Frequents</h2>
-
-        <button class="view-all">
-          View All
-        </button>
-      </div>
-
-      <div class="frequent-tabs">
-
-        <button class="frequent-tab active">
-          All
-        </button>
-
-        <button class="frequent-tab">
-          People
-        </button>
-
-        <button class="frequent-tab">
-          Businesses
-        </button>
-
-      </div>
-
-      <div class="frequent-list">
-
-        <div class="frequent-item">
-          <div class="avatar">+</div>
-          <span>Add</span>
-        </div>
-
-        <div class="frequent-item">
-          <div class="avatar">B</div>
-          <span>Brian</span>
-        </div>
-
-        <div class="frequent-item">
-          <div class="avatar">J</div>
-          <span>John</span>
-        </div>
-
-        <div class="frequent-item">
-          <div class="avatar">M</div>
-          <span>Mary</span>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= DEALS ================= -->
-    <section class="deal-banner">
-
-      <div class="deal-content">
-
-        <span class="deal-label">
-          SPECIAL OFFER
-        </span>
-
-        <h2>
-          Discover more with M-PESA
-        </h2>
-
-        <p>
-          Access convenient financial services
-          and exclusive offers.
-        </p>
-
-        <button
-          onclick="showToast('Opening offers...')"
-          class="deal-btn"
-        >
-          Explore
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= MY FINANCES ================= -->
-    <section class="section finances-section">
-
-      <div class="section-heading">
-
-        <h2>My Finances</h2>
-
-        <button class="view-all">
-          View All
-        </button>
-
-      </div>
-
-
-      <div class="finance-list">
-
-        <div class="finance-card">
-
-          <div class="finance-icon">
-            💳
-          </div>
-
-          <div>
-            <strong>M-PESA</strong>
-            <span>KSh 58.29</span>
-          </div>
-
-        </div>
-
-
-        <div class="finance-card">
-
-          <div class="finance-icon">
-            💰
-          </div>
-
-          <div>
-            <strong>Loans</strong>
-            <span>Available</span>
-          </div>
-
-        </div>
-
-
-        <div class="finance-card">
-
-          <div class="finance-icon">
-            📈
-          </div>
-
-          <div>
-            <strong>Savings</strong>
-            <span>View savings</span>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- ================= SCAN BUTTON ================= -->
-
-  <button
-    class="scan-button"
-    onclick="showToast('Scan to Pay')"
-  >
-    <span class="scan-icon">▦</span>
-    <span>Scan to Pay</span>
-  </button>
-
-
-  <!-- ================= TOAST ================= -->
-
-  <div
-    id="toast"
-    class="toast"
-  ></div>
-
-
-  <!-- ================= SCRIPT ================= -->
-
-  <script>
-
-    /* --------------------------------
-       BALANCE SHOW / HIDE
-    -------------------------------- */
-
-    const toggleBalance =
-      document.getElementById("toggleBalance");
-
-    const balanceAmount =
-      document.getElementById("balanceAmount");
-
-    let balanceVisible = true;
-
-    if (toggleBalance) {
-
-      toggleBalance.addEventListener("click", () => {
-
-        balanceVisible = !balanceVisible;
-
-        if (balanceVisible) {
-
-          balanceAmount.textContent =
-            "KSh 58.29";
-
-          toggleBalance.textContent = "👁";
-
-        } else {
-
-          balanceAmount.textContent =
-            "KSh •••••";
-
-          toggleBalance.textContent = "🙈";
-
-        }
-
-      });
-
-    }
-
-
-    /* --------------------------------
-       TOAST MESSAGE
-    -------------------------------- */
-
-    function showToast(message) {
-
-      const toast =
-        document.getElementById("toast");
-
-      if (!toast) return;
-
-      toast.textContent = message;
-
-      toast.classList.add("show");
-
-      setTimeout(() => {
-
-        toast.classList.remove("show");
-
-      }, 2200);
-
-    }
-
-
-    /* --------------------------------
-       FREQUENT TABS
-    -------------------------------- */
-
-    const frequentTabs =
-      document.querySelectorAll(".frequent-tab");
-
-    frequentTabs.forEach(tab => {
-
-      tab.addEventListener("click", () => {
-
-        frequentTabs.forEach(item => {
-
-          item.classList.remove("active");
-
-        });
-
-        tab.classList.add("active");
-
-      });
-
-    });
-
-  </script>
-
-</body>
-</html>
+        <
