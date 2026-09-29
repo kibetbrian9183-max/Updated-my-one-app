@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+
+  <meta name="theme-color" content="#101010">
+
+  <title>Send Money</title>
+
+  <link rel="stylesheet" href="send-money.css">
+</head>
+
+<body>
+
+  <main class="send-page">
+
+    <!-- HEADER -->
+    <header class="header">
+
+      <button
+        class="back-button"
+        id="backButton"
+        aria-label="Go back"
+      >
+        ‹
+      </button>
+
+      <h1>Send Money</h1>
+
+    </header>
+
+
+    <!-- TABS -->
+    <section class="tabs">
+
+      <button
+        class="tab active"
+        id="mobileTab"
+      >
+        Mobile number
+      </button>
+
+      <button
+        class="tab"
+        id="pochiTab"
+      >
+        Pochi la Biashara
+      </button>
+
+    </section>
+
+
+    <!-- FAVOURITES -->
+    <section class="favourites">
+
+      <div class="section-header">
+
+        <h2>Favourites</h2>
+
+        <button class="view-all">
+          View All
+        </button>
+
+      </div>
+
+      <button class="add-favourite" id="addFavourite">
+
+        <span class="plus">+</span>
+
+        <span>Add</span>
+
+      </button>
+
+    </section>
+
+
+    <!-- MOBILE NUMBER FORM -->
+    <section id="mobileForm">
+
+      <!-- PHONE -->
+      <div class="form-group">
+
+        <label for="phone">
+          Enter Phone Number
+        </label>
+
+        <div class="input-wrapper">
+
+          <input
+            type="tel"
+            id="phone"
+            placeholder="Enter Phone Number"
+            maxlength="13"
+            autocomplete="tel"
+          >
+
+          <div class="input-actions">
+
+            <!-- CONTACT -->
+            <button
+              type="button"
+              class="contact-button"
+              id="contactButton"
+              aria-label="Contacts"
+            >
+              <span class="contact-icon">
+                <span></span>
+              </span>
+            </button>
+
+            <span class="divider"></span>
+
+            <!-- QR -->
+            <button
+              type="button"
+              class="qr-button"
+              id="qrButton"
+              aria-label="Scan to send"
+            >
+              <span class="qr-icon"></span>
+
+              <span class="tooltip">
+                Scan to send
+              </span>
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- AMOUNT -->
+      <div class="form-group amount-group">
+
+        <label for="amount">
+          Enter Amount
+        </label>
+
+        <div class="input-wrapper amount-wrapper">
+
+          <input
+            type="number"
+            id="amount"
+            placeholder="0"
+            min="1"
+            inputmode="decimal"
+          >
+
+          <span class="currency">
+            Ksh
+          </span>
+
+        </div>
+
+        <div class="balance-info">
+          Balance: Ksh 58.29 - Fuliza: Ksh 400.00
+        </div>
+
+      </div>
+
+
+      <!-- PAYMENT METHODS -->
+      <section class="payment-section">
+
+        <h2>
+          Select Payment Method
+        </h2>
+
+        <div class="payment-methods">
+
+          <!-- MPESA -->
+          <button
+            class="payment-card selected"
+            id="mpesaPayment"
+            type="button"
+          >
+
+            <div class="payment-content">
+
+              <span class="mpesa-logo"></span>
+
+              <div>
+                <strong>M-PESA</strong>
+
+                <small>
+                  Bal. Ksh. 58.29
+                </small>
+              </div>
+
+            </div>
+
+            <span class="selected-check">
+              ✓
+            </span>
+
+          </button>
+
+
+          <!-- SHIRIKI PAY -->
+          <button
+            class="payment-card"
+            id="shirikiPayment"
+            type="button"
+          >
+
+            <div class="payment-content">
+
+              <span class="shirikipay-logo">
+                S
+              </span>
+
+              <div>
+                <strong>Shiriki Pay</strong>
+
+                <small>
+                  Select
+                </small>
+              </div>
+
+            </div>
+
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- CONTINUE -->
+      <button
+        class="continue-button"
+        id="continueButton"
+        disabled
+      >
+        Continue
+      </button>
+
+    </section>
+
+
+    <!-- POCHI FORM -->
+    <section
+      id="pochiForm"
+      class="pochi-form hidden"
+    >
+
+      <div class="form-group">
+
+        <label for="businessNumber">
+          Enter Business Number
+        </label>
+
+        <input
+          type="tel"
+          id="businessNumber"
+          class="simple-input"
+          placeholder="Enter Business Number"
+        >
+
+      </div>
+
+      <div class="form-group">
+
+        <label for="pochiAmount">
+          Enter Amount
+        </label>
+
+        <div class="input-wrapper amount-wrapper">
+
+          <input
+            type="number"
+            id="pochiAmount"
+            placeholder="0"
+            min="1"
+          >
+
+          <span class="currency">
+            Ksh
+          </span>
+
+        </div>
+
+      </div>
+
+      <button
+        class="continue-button"
+        id="pochiContinue"
+        disabled
+      >
+        Continue
+      </button>
+
+    </section>
+
+
+    <!-- DO MORE -->
+    <section class="do-more">
+
+      <h2>Do More</h2>
+
+      <div class="do-more-grid">
+
+
+        <!-- SEND TO MANY -->
+        <button
+          class="do-more-card"
+          data-action="Send to Many"
+        >
+
+          <div class="do-more-icon people-icon">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+          </div>
+
+          <strong>
+            Send to<br>
+            Many
+          </strong>
+
+        </button>
+
+
+        <!-- REQUEST MONEY -->
+        <button
+          class="do-more-card"
+          data-action="Request Money"
+        >
+
+          <div class="do-more-icon request-icon">
+
+            <span>▣</span>
+            <b>↑</b>
+
+          </div>
+
+          <strong>
+            Request<br>
+            Money
+          </strong>
+
+        </button>
+
+
+        <!-- INTERNATIONAL -->
+        <button
+          class="do-more-card"
+          data-action="International Transfers"
+        >
+
+          <div class="do-more-icon globe-icon">
+            ◎
+          </div>
+
+          <strong>
+            International<br>
+            Transfers
+          </strong>
+
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- TOAST -->
+    <div
+      class="toast"
+      id="toast"
+    ></div>
+
+  </main>
+
+
+  <script src="send-money.js"></script>
+
+</body>
+</html>
