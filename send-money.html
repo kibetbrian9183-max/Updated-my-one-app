@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Send Money</title>
+
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #111111;
+      color: #eeeeee;
+      font-family: Arial, sans-serif;
+    }
+
+    .send-page {
+      min-height: 100vh;
+      max-width: 700px;
+      margin: auto;
+      padding: 20px 18px 40px;
+    }
+
+    .send-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .back-btn {
+      position: absolute;
+      left: 0;
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 50%;
+      background: #222;
+      color: white;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .send-header h1 {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .tabs {
+      display: flex;
+      background: #333;
+      border-radius: 35px;
+      padding: 4px;
+      margin-bottom: 24px;
+    }
+
+    .tab {
+      flex: 1;
+      border: 0;
+      padding: 15px 8px;
+      border-radius: 30px;
+      background: transparent;
+      color: #ddd;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .tab.active {
+      background: #2da84a;
+      color: white;
+    }
+
+    .section-title {
+      font-size: 16px;
+      margin: 18px 0 10px;
+    }
+
+    .favourite {
+      width: 55px;
+      text-align: center;
+      color: #ccc;
+      font-size: 13px;
+    }
+
+    .add-favourite {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #333;
+      border: 1px solid #555;
+      color: #2db34a;
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 7px;
+    }
+
+    .field-label {
+      display: block;
+      margin: 20px 0 10px;
+      color: #ddd;
+      font-size: 15px;
+    }
+
+    .input-wrap {
+      position: relative;
+    }
+
+    .input-wrap input {
+      width: 100%;
+      height: 64px;
+      border-radius: 8px;
+      border: 1px solid #555;
+      background: #111;
+      color: white;
+      padding: 0 50px 0 17px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .input-wrap input:focus {
+      border: 2px solid #2da84a;
+    }
+
+    .amount-input input {
+      border: 2px solid #2da84a;
+    }
+
+    .currency {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #bbb;
+      font-weight: 600;
+    }
+
+    .input-icons {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      gap: 14px;
+      color: #2db34a;
+    }
+
+    .balance {
+      font-size: 13px;
+      color: #bbb;
+      margin: 7px 3px 25px;
+    }
+
+    .payment-title {
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .payment-methods {
+      display: flex;
+      gap: 16px;
+    }
+
+    .payment {
+      flex: 1;
+      min-height: 64px;
+      border: 1px solid #555;
+      border-radius: 8px;
+      background: #222;
+      color: white;
+      text-align: left;
+      padding: 10px 14px;
+      cursor: pointer;
+    }
+
+    .payment.selected {
+      border: 2px solid #2da84a;
+    }
+
+    .payment strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .payment small {
+      color: #aaa;
+    }
+
+    .continue-btn {
+      width: 100%;
+      height: 54px;
+      border: 0;
+      border-radius: 8px;
+      margin-top: 27px;
+      background: #333;
+      color: #aaa;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .continue-btn.enabled {
+      background: #2da84a;
+      color: white;
+    }
+
+    .do-more {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .more-card {
+      min-height: 145px;
+      border-radius: 18px;
+      background: #202020;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 15px 8px;
+    }
+
+    .more-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .more-card span {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 420px) {
+      .send-page {
+        padding: 18px;
+      }
+
+      .payment-methods {
+        gap: 12px;
+      }
+
+      .do-more {
+        gap: 10px;
+      }
+
+      .more-card {
+        min-height: 140px;
+      }
+    }
+
+    @media (min-width: 700px) {
+      .send-page {
+        padding-top: 35px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="send-page">
+
+    <header class="send-header">
+      <button class="back-btn" onclick="history.back()">‹</button>
+      <h1>Send Money</h1>
+    </header>
+
+    <div class="tabs">
+      <button class="tab active">Mobile number</button>
+      <button class="tab">Pochi la Biashara</button>
+    </div>
+
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <h3 class="section-title">Favourites</h3>
+      <span style="font-size:13px;color:#bbb;">View All</span>
+    </div>
+
+    <div class="favourite">
+      <div class="add-favourite">+</div>
+      Add
+    </div>
+
+    <label class="field-label">Enter Phone Number</label>
+
+    <div class="input-wrap">
+      <input
+        type="tel"
+        id="phone"
+        placeholder="Enter Phone Number"
+        maxlength="13"
+      >
+
+      <div class="input-icons">
+        <span>◉</span>
+        <span>▦</span>
+      </div>
+    </div>
+
+    <label class="field-label">Enter Amount</label>
+
+    <div class="input-wrap amount-input">
+      <input
+        type="number"
+        id="amount"
+        placeholder="0"
+        min="1"
+      >
+      <span class="currency">Ksh</span>
+    </div>
+
+    <div class="balance">
+      Balance: Ksh 58.29 - Fuliza: Ksh 400.00
+    </div>
+
+    <div class="payment-title">
+      Select Payment Method
+    </div>
+
+    <div class="payment-methods">
+
+      <button class="payment selected">
+        <strong>🔻 M-PESA</strong>
+        <small>Bal. Ksh. 58.29</small>
+      </button>
+
+      <button class="payment">
+        <strong>🟢 Shiriki Pay</strong>
+        <small>Select</small>
+      </button>
+
+    </div>
+
+    <button class="continue-btn" id="continueBtn">
+      Continue
+    </button>
+
+    <h3 class="section-title">Do More</h3>
+
+    <div class="do-more">
+
+      <div class="more-card">
+        <div class="more-icon">👥</div>
+        <span>Send to<br>Many</span>
+      </div>
+
+      <div class="more-card">
+        <div class="more-icon">💵</div>
+        <span>Request<br>Money</span>
+      </div>
+
+      <div class="more-card">
+        <div class="more-icon">🌐</div>
+        <span>International<br>Transfers</span>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script>
+    const phone = document.getElementById("phone");
+    const amount = document.getElementById("amount");
+    const continueBtn = document.getElementById("continueBtn");
+
+    function checkForm() {
+      const phoneValue = phone.value.trim();
+      const amountValue = Number(amount.value);
+
+      if (phoneValue.length >= 9 && amountValue > 0) {
+        continueBtn.classList.add("enabled");
+      } else {
+        continueBtn.classList.remove("enabled");
+      }
+    }
+
+    phone.addEventListener("input", checkForm);
+    amount.addEventListener("input", checkForm);
+
+    document.querySelectorAll(".payment").forEach(button => {
+      button.addEventListener("click", () => {
+
+        document.querySelectorAll(".payment")
+          .forEach(item => item.classList.remove("selected"));
+
+        button.classList.add("selected");
+      });
+    });
+
+    continueBtn.addEventListener("click", () => {
+
+      if (!continueBtn.classList.contains("enabled")) {
+        return;
+      }
+
+      alert(
+        "Send Ksh " +
+        amount.value +
+        " to " +
+        phone.value
+      );
+    });
+  </script>
+
+</body>
+</html>
