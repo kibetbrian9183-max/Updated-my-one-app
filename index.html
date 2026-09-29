@@ -1,444 +1,80 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>M-PESA Dashboard</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #101010;
-      color: #fff;
-      min-height: 100vh;
-    }
-
-    button,
-    a {
-      font-family: inherit;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    /* HEADER */
-
-    .header {
-      height: 70px;
-      padding: 0 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #111;
-    }
-
-    .logo {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: -1px;
-    }
-
-    .logo span {
-      color: #35b84a;
-    }
-
-    .menu {
-      width: 42px;
-      height: 42px;
-      border: 0;
-      border-radius: 50%;
-      background: #242424;
-      color: white;
-      font-size: 22px;
-    }
-
-    /* MAIN */
-
-    .container {
-      width: 100%;
-      max-width: 700px;
-      margin: auto;
-      padding: 15px 18px 100px;
-    }
-
-    /* BALANCE */
-
-    .balance-card {
-      background: #202020;
-      border-radius: 25px;
-      padding: 25px 20px;
-      min-height: 170px;
-      border-left: 4px solid #32b44a;
-      margin-bottom: 28px;
-    }
-
-    .balance-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      color: #bdbdbd;
-      font-size: 14px;
-    }
-
-    .eye {
-      border: 0;
-      background: transparent;
-      font-size: 20px;
-    }
-
-    .balance {
-      margin-top: 14px;
-      font-size: 34px;
-      font-weight: 700;
-    }
-
-    .balance-label {
-      margin-top: 15px;
-      color: #999;
-      font-size: 13px;
-    }
-
-    /* SECTION */
-
-    .section {
-      margin-bottom: 30px;
-    }
-
-    .section-title {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 15px;
-    }
-
-    .section-title h2 {
-      font-size: 21px;
-    }
-
-    .view-all {
-      background: transparent;
-      border: 0;
-      color: #aaa;
-      font-size: 13px;
-    }
-
-    /* QUICK ACTIONS */
-
-    .quick-actions {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-    }
-
-    .quick-action {
-      min-height: 105px;
-      border-radius: 16px;
-      background: #202020;
-      border: 1px solid #292929;
-      color: white;
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      transition: .2s;
-    }
-
-    .quick-action:active {
-      transform: scale(.96);
-    }
-
-    .quick-icon {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      background: #292929;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-    }
-
-    .quick-action span {
-      font-size: 12px;
-      text-align: center;
-    }
-
-    /* FREQUENTS */
-
-    .tabs {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      margin-bottom: 17px;
-    }
-
-    .tab {
-      border: 0;
-      background: #242424;
-      color: #aaa;
-      padding: 9px 17px;
-      border-radius: 20px;
-      white-space: nowrap;
-    }
-
-    .tab.active {
-      background: #35b84a;
-      color: white;
-    }
-
-    .frequents {
-      display: flex;
-      gap: 20px;
-      overflow-x: auto;
-    }
-
-    .person {
-      min-width: 60px;
-      text-align: center;
-      color: #ccc;
-      font-size: 12px;
-    }
-
-    .avatar {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      margin: auto auto 7px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #333;
-      border: 1px solid #444;
-      font-size: 18px;
-      color: white;
-    }
-
-    .add {
-      color: #35b84a;
-      font-size: 28px;
-    }
-
-    /* DEAL */
-
-    .deal {
-      background: linear-gradient(135deg, #202020, #292929);
-      border-radius: 22px;
-      padding: 24px;
-      margin-bottom: 30px;
-      border: 1px solid #333;
-    }
-
-    .deal-small {
-      color: #35b84a;
-      font-size: 11px;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-
-    .deal h2 {
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
-
-    .deal p {
-      color: #aaa;
-      font-size: 14px;
-      line-height: 1.5;
-      margin-bottom: 17px;
-    }
-
-    .deal button {
-      border: 0;
-      background: #35b84a;
-      color: white;
-      border-radius: 20px;
-      padding: 10px 18px;
-      font-weight: bold;
-    }
-
-    /* FINANCES */
-
-    .finances {
-      display: flex;
-      gap: 12px;
-      overflow-x: auto;
-    }
-
-    .finance {
-      min-width: 170px;
-      background: #202020;
-      border-radius: 17px;
-      padding: 17px;
-    }
-
-    .finance-icon {
-      font-size: 24px;
-      margin-bottom: 12px;
-    }
-
-    .finance strong {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    .finance small {
-      color: #999;
-    }
-
-    /* SCAN */
-
-    .scan {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      border: 0;
-      border-radius: 30px;
-      background: #35b84a;
-      color: white;
-      padding: 15px 24px;
-      font-weight: bold;
-      box-shadow: 0 8px 25px rgba(0,0,0,.5);
-      z-index: 10;
-    }
-
-    /* TOAST */
-
-    .toast {
-      position: fixed;
-      left: 50%;
-      bottom: 85px;
-      transform: translateX(-50%);
-      background: #333;
-      color: white;
-      padding: 12px 20px;
-      border-radius: 8px;
-      display: none;
-      z-index: 20;
-      font-size: 14px;
-    }
-
-    .toast.show {
-      display: block;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 500px) {
-
-      .header {
-        height: 62px;
-      }
-
-      .container {
-        padding-left: 14px;
-        padding-right: 14px;
-      }
-
-      .balance {
-        font-size: 30px;
-      }
-
-      .quick-actions {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 7px;
-      }
-
-      .quick-action {
-        min-height: 90px;
-        border-radius: 13px;
-      }
-
-      .quick-icon {
-        width: 39px;
-        height: 39px;
-        font-size: 19px;
-      }
-
-      .quick-action span {
-        font-size: 10px;
-      }
-
-      .deal h2 {
-        font-size: 20px;
-      }
-    }
-
-    @media (max-width: 360px) {
-
-      .quick-actions {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .quick-action {
-        min-height: 90px;
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101010">
+<title>M-PESA Dashboard</title>
+<link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
+<div class="app">
+<header class="topbar">
+  <div class="user">
+    <div class="avatar">B<span>✓</span></div>
+    <div><div class="hello">Good afternoon,</div><div class="name">Brian 👋</div></div>
+  </div>
+  <div class="top-actions">
+    <button class="circle" aria-label="Notifications"><svg viewBox="0 0 24 24"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg><i></i></button>
+    <button class="circle" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg></button>
+  </div>
+</header>
 
-  <!-- HEADER -->
+<section class="balances">
+<article class="balance-card mpesa"><div class="network"></div><div class="content">
+  <div class="eyebrow">M-PESA Balance</div>
+  <div class="amount"><strong id="balance">Ksh 58.29</strong><button id="eye"><svg viewBox="0 0 24 24"><path d="M2.5 12s3.4-6 9.5-6 9.5 6 9.5 6-3.4 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.5"/><path d="m4 4 16 16"/></svg></button></div>
+  <div class="fuliza">Available Fuliza: <b>Ksh 400.00</b></div>
+  <button class="statement">View Statements</button>
+</div></article>
+<article class="balance-card airtime"><div class="content">
+  <div class="eyebrow">My Balances</div><div class="air-label">Airtime</div><strong>Ksh. 0</strong>
+  <button class="statement">View Details</button>
+</div></article>
+</section>
+<div class="slider-dots"><b></b><i></i></div>
 
-  <header class="header">
+<section class="panel quick">
+<div class="heading"><h2>Quick Actions</h2><button class="link">View all ›</button></div>
+<div class="quick-grid">
+  <button class="action" data-name="Send Money"><span class="qicon green"><svg viewBox="0 0 24 24"><path d="m4 12 16-8-5 16-3-6-8-2Z"/><path d="m12 14 5-6"/></svg></span>Send<br>Money</button>
+  <button class="action" data-name="Lipa na M-PESA"><span class="qicon red"><svg viewBox="0 0 24 24"><path d="M5 9h14l-1 10H6L5 9Z"/><path d="M8 9a4 4 0 0 1 8 0M9 13v3M12 13v3M15 13v3"/></svg></span>Lipa na<br>M-PESA</button>
+  <button class="action" data-name="Withdraw Money"><span class="qicon green"><svg viewBox="0 0 24 24"><rect x="4" y="6" width="13" height="12" rx="2"/><path d="M17 10h3v8a2 2 0 0 1-2 2H8M7 10h7M18 5v7M15.5 9.5 18 12l2.5-2.5"/></svg></span>Withdraw<br>Money</button>
+  <button class="action" data-name="Pochi Wallet"><span class="qicon pochi"><svg viewBox="0 0 24 24"><path d="M4 8h15v10H4z"/><path d="M5 8V6h13v2M16 12h4v4h-4a2 2 0 1 1 0-4Z"/></svg></span>Pochi<br>Wallet</button>
+  <button class="action" data-name="Buy Bundles"><span class="qicon red"><svg viewBox="0 0 24 24"><path d="M12 3v18M6 7c0-2 2-3 6-3s6 1 6 3-2 3-6 3-6 1-6 3 2 3 6 3 6-1 6-3"/></svg></span>Buy<br>Bundles</button>
+  <button class="action" data-name="Airtime Top Up"><span class="qicon green"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M9 7h6M10 17h4"/></svg></span>Airtime<br>Top Up</button>
+  <button class="action" data-name="Tunukiwa Bundles"><span class="qicon green"><svg viewBox="0 0 24 24"><path d="M5 8h14v12H5zM4 5h16v3H4zM12 5v15M12 5c-3 0-5-1-4-3 1-1 4 1 4 3ZM12 5c3 0 5-1 4-3-1-1-4 1-4 3Z"/></svg></span>Tunukiwa<br>Bundles</button>
+  <button class="action" data-name="Home Internet"><span class="qicon green"><svg viewBox="0 0 24 24"><path d="M3 11a13 13 0 0 1 18 0M6 14a9 9 0 0 1 12 0M9 17a5 5 0 0 1 6 0"/><circle cx="12" cy="20" r="1"/></svg></span>Home<br>Internet</button>
+</div></section>
 
-    <div class="logo">
-      <span>M</span>-PESA
-    </div>
+<section class="panel frequent">
+<div class="heading"><h2>Frequents</h2><button class="collapse">⌃</button></div>
+<div class="tabs"><button class="tab active">Apps</button><button class="tab">Send</button><button class="tab">Pay</button><button class="tab">Bundles</button></div>
+<div class="freq-list">
+<button class="freq" data-name="M-Shwari"><span class="app-logo mshwari">M<small>Shwari</small></span><label>M-Shwari</label></button>
+<button class="freq" data-name="M-Pesa Visa Card"><span class="app-logo visa">M<small>VISA</small></span><label>M-Pesa Visa<br>Card(Globa...</label></button>
+</div></section>
 
-    <button class="menu">
-      ☰
-    </button>
+<section class="discover">
+<h2>Explore &amp; Discover Deals 🔥</h2>
+<div class="banner"><div class="banner-copy"><span>LIMITED TIME OFFER</span><h3>PATA<br><b>MORE</b></h3><p>NA BONGA ON MASOKO</p><strong>1 BONGA POINT = KES 0.50</strong><button>SHOP NOW</button></div><div class="banner-art">📱 💻 🎧 🔊</div></div>
+<div class="banner-dots"><i></i><i></i><i></i></div></section>
 
-  </header>
+<section class="panel finances">
+<div class="heading"><h2>My Finances</h2><button class="link">View all ›</button></div>
+<div class="finance-scroll">
+<button class="finance"><span class="flogo dark">ZiiDi<small>Trader</small></span>ZiiDi<br>Trader</button>
+<button class="finance"><span class="flogo white">ZiiDi</span>ZiiDi<br>Invest &amp; Save</button>
+<button class="finance"><span class="flogo green">TUUNZA<br>MAPATO</span>Tuunza<br>Mapato</button>
+<button class="finance"><span class="flogo red">◆</span>ShiriKaPay</button>
+<button class="finance"><span class="flogo green">MALI</span>Mali</button>
+<button class="finance"><span class="flogo orange">•••</span>Faraja</button>
+<button class="finance"><span class="flogo green">▣</span>M-PESA<br>Ratiba</button>
+</div></section>
 
-
-  <main class="container">
-
-    <!-- BALANCE -->
-
-    <section class="balance-card">
-
-      <div class="balance-top">
-        <span>MPESA Balance</span>
-
-        <button class="eye" id="eye">
-          👁️
-        </button>
-      </div>
-
-      <div class="balance" id="balance">
-        KSh 58.29
-      </div>
-
-      <div class="balance-label">
-        Available Balance •••• 5829
-      </div>
-
-    </section>
-
-
-    <!-- QUICK ACTIONS -->
-
-    <section class="section">
-
-      <div class="section-title">
-        <h2>Quick Actions</h2>
-      </div>
-
-      <div class="quick-actions">
-
-        <!-- SEND MONEY -->
-
-        <
+<section class="panel entertainment"><h2>Entertainment</h2></section>
+<button class="scan"><span>▦</span>Scan to pay</button>
+<div id="toast"></div>
+</div>
+<script src="script.js"></script>
+</body></html>
