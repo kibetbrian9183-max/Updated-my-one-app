@@ -5,76 +5,656 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#101010">
 <title>M-PESA Dashboard</title>
+
 <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+
 <div class="app">
+
+<!-- ================= HEADER ================= -->
 <header class="topbar">
+
   <div class="user">
-    <div class="avatar">B<span>✓</span></div>
-    <div><div class="hello">Good afternoon,</div><div class="name">Brian 👋</div></div>
+    <div class="avatar">
+      B
+      <span>✓</span>
+    </div>
+
+    <div>
+      <div class="hello">Good afternoon,</div>
+      <div class="name">Brian 👋</div>
+    </div>
   </div>
+
   <div class="top-actions">
-    <button class="circle" aria-label="Notifications"><svg viewBox="0 0 24 24"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg><i></i></button>
-    <button class="circle" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg></button>
+
+    <button class="circle" aria-label="Notifications">
+      <svg viewBox="0 0 24 24">
+        <path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/>
+      </svg>
+      <i></i>
+    </button>
+
+    <button class="circle" aria-label="Search">
+      <svg viewBox="0 0 24 24">
+        <circle cx="10.8" cy="10.8" r="6.8"/>
+        <path d="m16 16 5 5"/>
+      </svg>
+    </button>
+
   </div>
+
 </header>
 
-<section class="balances">
-<article class="balance-card mpesa"><div class="network"></div><div class="content">
-  <div class="eyebrow">M-PESA Balance</div>
-  <div class="amount"><strong id="balance">Ksh 58.29</strong><button id="eye"><svg viewBox="0 0 24 24"><path d="M2.5 12s3.4-6 9.5-6 9.5 6 9.5 6-3.4 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.5"/><path d="m4 4 16 16"/></svg></button></div>
-  <div class="fuliza">Available Fuliza: <b>Ksh 400.00</b></div>
-  <button class="statement">View Statements</button>
-</div></article>
-<article class="balance-card airtime"><div class="content">
-  <div class="eyebrow">My Balances</div><div class="air-label">Airtime</div><strong>Ksh. 0</strong>
-  <button class="statement">View Details</button>
-</div></article>
-</section>
-<div class="slider-dots"><b></b><i></i></div>
 
+<!-- ================= BALANCES ================= -->
+<section class="balances">
+
+  <article class="balance-card mpesa">
+
+    <div class="network"></div>
+
+    <div class="content">
+
+      <div class="eyebrow">
+        M-PESA Balance
+      </div>
+
+      <div class="amount">
+
+        <strong id="balance">
+          Ksh 58.29
+        </strong>
+
+        <button id="eye" aria-label="Show or hide balance">
+
+          <svg viewBox="0 0 24 24">
+            <path d="M2.5 12s3.4-6 9.5-6 9.5 6 9.5 6-3.4 6-9.5 6-9.5-6-9.5-6Z"/>
+            <circle cx="12" cy="12" r="2.5"/>
+            <path d="m4 4 16 16"/>
+          </svg>
+
+        </button>
+
+      </div>
+
+      <div class="fuliza">
+        Available Fuliza:
+        <b>Ksh 400.00</b>
+      </div>
+
+      <button class="statement">
+        View Statements
+      </button>
+
+    </div>
+
+  </article>
+
+
+  <article class="balance-card airtime">
+
+    <div class="content">
+
+      <div class="eyebrow">
+        My Balances
+      </div>
+
+      <div class="air-label">
+        Airtime
+      </div>
+
+      <strong>
+        Ksh. 0
+      </strong>
+
+      <button class="statement">
+        View Details
+      </button>
+
+    </div>
+
+  </article>
+
+</section>
+
+
+<div class="slider-dots">
+  <b></b>
+  <i></i>
+</div>
+
+
+<!-- ================= QUICK ACTIONS ================= -->
 <section class="panel quick">
-<div class="heading"><h2>Quick Actions</h2><button class="link">View all ›</button></div>
-<div class="quick-grid">
-  <button class="action" data-name="Send Money"><span class="qicon green"><svg viewBox="0 0 24 24"><path d="m4 12 16-8-5 16-3-6-8-2Z"/><path d="m12 14 5-6"/></svg></span>Send<br>Money</button>
-  <button class="action" data-name="Lipa na M-PESA"><span class="qicon red"><svg viewBox="0 0 24 24"><path d="M5 9h14l-1 10H6L5 9Z"/><path d="M8 9a4 4 0 0 1 8 0M9 13v3M12 13v3M15 13v3"/></svg></span>Lipa na<br>M-PESA</button>
-  <button class="action" data-name="Withdraw Money"><span class="qicon green"><svg viewBox="0 0 24 24"><rect x="4" y="6" width="13" height="12" rx="2"/><path d="M17 10h3v8a2 2 0 0 1-2 2H8M7 10h7M18 5v7M15.5 9.5 18 12l2.5-2.5"/></svg></span>Withdraw<br>Money</button>
-  <button class="action" data-name="Pochi Wallet"><span class="qicon pochi"><svg viewBox="0 0 24 24"><path d="M4 8h15v10H4z"/><path d="M5 8V6h13v2M16 12h4v4h-4a2 2 0 1 1 0-4Z"/></svg></span>Pochi<br>Wallet</button>
-  <button class="action" data-name="Buy Bundles"><span class="qicon red"><svg viewBox="0 0 24 24"><path d="M12 3v18M6 7c0-2 2-3 6-3s6 1 6 3-2 3-6 3-6 1-6 3 2 3 6 3 6-1 6-3"/></svg></span>Buy<br>Bundles</button>
-  <button class="action" data-name="Airtime Top Up"><span class="qicon green"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M9 7h6M10 17h4"/></svg></span>Airtime<br>Top Up</button>
-  <button class="action" data-name="Tunukiwa Bundles"><span class="qicon green"><svg viewBox="0 0 24 24"><path d="M5 8h14v12H5zM4 5h16v3H4zM12 5v15M12 5c-3 0-5-1-4-3 1-1 4 1 4 3ZM12 5c3 0 5-1 4-3-1-1-4 1-4 3Z"/></svg></span>Tunukiwa<br>Bundles</button>
-  <button class="action" data-name="Home Internet"><span class="qicon green"><svg viewBox="0 0 24 24"><path d="M3 11a13 13 0 0 1 18 0M6 14a9 9 0 0 1 12 0M9 17a5 5 0 0 1 6 0"/><circle cx="12" cy="20" r="1"/></svg></span>Home<br>Internet</button>
-</div></section>
+
+  <div class="heading">
+
+    <h2>
+      Quick Actions
+    </h2>
+
+    <button class="link">
+      View all ›
+    </button>
+
+  </div>
+
+
+  <div class="quick-grid">
+
+
+    <!-- SEND MONEY -->
+    <!-- This now opens send-money.html -->
+
+    <button
+      class="action"
+      onclick="window.location.href='send-money.html'"
+    >
+
+      <span class="qicon green">
+
+        <svg viewBox="0 0 24 24">
+          <path d="m4 12 16-8-5 16-3-6-8-2Z"/>
+          <path d="m12 14 5-6"/>
+        </svg>
+
+      </span>
+
+      Send<br>
+      Money
+
+    </button>
+
+
+    <!-- LIPA NA M-PESA -->
+
+    <button
+      class="action"
+      data-name="Lipa na M-PESA"
+    >
+
+      <span class="qicon red">
+
+        <svg viewBox="0 0 24 24">
+          <path d="M5 9h14l-1 10H6L5 9Z"/>
+          <path d="M8 9a4 4 0 0 1 8 0"/>
+          <path d="M9 13v3M12 13v3M15 13v3"/>
+        </svg>
+
+      </span>
+
+      Lipa na<br>
+      M-PESA
+
+    </button>
+
+
+    <!-- WITHDRAW -->
+
+    <button
+      class="action"
+      data-name="Withdraw Money"
+    >
+
+      <span class="qicon green">
+
+        <svg viewBox="0 0 24 24">
+
+          <rect
+            x="4"
+            y="6"
+            width="13"
+            height="12"
+            rx="2"
+          />
+
+          <path d="M17 10h3v8a2 2 0 0 1-2 2H8"/>
+          <path d="M7 10h7"/>
+          <path d="M18 5v7"/>
+          <path d="M15.5 9.5 18 12l2.5-2.5"/>
+
+        </svg>
+
+      </span>
+
+      Withdraw<br>
+      Money
+
+    </button>
+
+
+    <!-- POCHI -->
+
+    <button
+      class="action"
+      data-name="Pochi Wallet"
+    >
+
+      <span class="qicon pochi">
+
+        <svg viewBox="0 0 24 24">
+
+          <path d="M4 8h15v10H4z"/>
+          <path d="M5 8V6h13v2"/>
+          <path d="M16 12h4v4h-4a2 2 0 1 1 0-4Z"/>
+
+        </svg>
+
+      </span>
+
+      Pochi<br>
+      Wallet
+
+    </button>
+
+
+    <!-- BUY BUNDLES -->
+
+    <button
+      class="action"
+      data-name="Buy Bundles"
+    >
+
+      <span class="qicon red">
+
+        <svg viewBox="0 0 24 24">
+
+          <path d="M12 3v18"/>
+          <path d="M6 7c0-2 2-3 6-3s6 1 6 3-2 3-6 3-6 1-6 3 2 3 6 3 6-1 6-3"/>
+
+        </svg>
+
+      </span>
+
+      Buy<br>
+      Bundles
+
+    </button>
+
+
+    <!-- AIRTIME -->
+
+    <button
+      class="action"
+      data-name="Airtime Top Up"
+    >
+
+      <span class="qicon green">
+
+        <svg viewBox="0 0 24 24">
+
+          <rect
+            x="5"
+            y="4"
+            width="14"
+            height="16"
+            rx="2"
+          />
+
+          <path d="M9 7h6"/>
+          <path d="M10 17h4"/>
+
+        </svg>
+
+      </span>
+
+      Airtime<br>
+      Top Up
+
+    </button>
+
+
+    <!-- TUNUKIWA -->
+
+    <button
+      class="action"
+      data-name="Tunukiwa Bundles"
+    >
+
+      <span class="qicon green">
+
+        <svg viewBox="0 0 24 24">
+
+          <path d="M5 8h14v12H5z"/>
+          <path d="M4 5h16v3H4z"/>
+          <path d="M12 5v15"/>
+
+          <path d="M12 5c-3 0-5-1-4-3 1-1 4 1 4 3Z"/>
+          <path d="M12 5c3 0 5-1 4-3-1-1-4 1-4 3Z"/>
+
+        </svg>
+
+      </span>
+
+      Tunukiwa<br>
+      Bundles
+
+    </button>
+
+
+    <!-- HOME INTERNET -->
+
+    <button
+      class="action"
+      data-name="Home Internet"
+    >
+
+      <span class="qicon green">
+
+        <svg viewBox="0 0 24 24">
+
+          <path d="M3 11a13 13 0 0 1 18 0"/>
+          <path d="M6 14a9 9 0 0 1 12 0"/>
+          <path d="M9 17a5 5 0 0 1 6 0"/>
+          <circle
+            cx="12"
+            cy="20"
+            r="1"
+          />
+
+        </svg>
+
+      </span>
+
+      Home<br>
+      Internet
+
+    </button>
+
+
+  </div>
+
+</section>
+
+
+<!-- ================= FREQUENTS ================= -->
 
 <section class="panel frequent">
-<div class="heading"><h2>Frequents</h2><button class="collapse">⌃</button></div>
-<div class="tabs"><button class="tab active">Apps</button><button class="tab">Send</button><button class="tab">Pay</button><button class="tab">Bundles</button></div>
-<div class="freq-list">
-<button class="freq" data-name="M-Shwari"><span class="app-logo mshwari">M<small>Shwari</small></span><label>M-Shwari</label></button>
-<button class="freq" data-name="M-Pesa Visa Card"><span class="app-logo visa">M<small>VISA</small></span><label>M-Pesa Visa<br>Card(Globa...</label></button>
-</div></section>
+
+  <div class="heading">
+
+    <h2>
+      Frequents
+    </h2>
+
+    <button class="collapse">
+      ⌃
+    </button>
+
+  </div>
+
+
+  <div class="tabs">
+
+    <button class="tab active">
+      Apps
+    </button>
+
+    <button class="tab">
+      Send
+    </button>
+
+    <button class="tab">
+      Pay
+    </button>
+
+    <button class="tab">
+      Bundles
+    </button>
+
+  </div>
+
+
+  <div class="freq-list">
+
+
+    <button
+      class="freq"
+      data-name="M-Shwari"
+    >
+
+      <span class="app-logo mshwari">
+        M
+        <small>
+          Shwari
+        </small>
+      </span>
+
+      <label>
+        M-Shwari
+      </label>
+
+    </button>
+
+
+    <button
+      class="freq"
+      data-name="M-Pesa Visa Card"
+    >
+
+      <span class="app-logo visa">
+        M
+        <small>
+          VISA
+        </small>
+      </span>
+
+      <label>
+        M-Pesa Visa<br>
+        Card(Globa...
+      </label>
+
+    </button>
+
+
+  </div>
+
+</section>
+
+
+<!-- ================= DISCOVER ================= -->
 
 <section class="discover">
-<h2>Explore &amp; Discover Deals 🔥</h2>
-<div class="banner"><div class="banner-copy"><span>LIMITED TIME OFFER</span><h3>PATA<br><b>MORE</b></h3><p>NA BONGA ON MASOKO</p><strong>1 BONGA POINT = KES 0.50</strong><button>SHOP NOW</button></div><div class="banner-art">📱 💻 🎧 🔊</div></div>
-<div class="banner-dots"><i></i><i></i><i></i></div></section>
+
+  <h2>
+    Explore &amp; Discover Deals 🔥
+  </h2>
+
+
+  <div class="banner">
+
+    <div class="banner-copy">
+
+      <span>
+        LIMITED TIME OFFER
+      </span>
+
+      <h3>
+        PATA<br>
+        <b>MORE</b>
+      </h3>
+
+      <p>
+        NA BONGA ON MASOKO
+      </p>
+
+      <strong>
+        1 BONGA POINT = KES 0.50
+      </strong>
+
+      <button>
+        SHOP NOW
+      </button>
+
+    </div>
+
+
+    <div class="banner-art">
+      📱 💻 🎧 🔊
+    </div>
+
+  </div>
+
+
+  <div class="banner-dots">
+
+    <i></i>
+    <i></i>
+    <i></i>
+
+  </div>
+
+</section>
+
+
+<!-- ================= MY FINANCES ================= -->
 
 <section class="panel finances">
-<div class="heading"><h2>My Finances</h2><button class="link">View all ›</button></div>
-<div class="finance-scroll">
-<button class="finance"><span class="flogo dark">ZiiDi<small>Trader</small></span>ZiiDi<br>Trader</button>
-<button class="finance"><span class="flogo white">ZiiDi</span>ZiiDi<br>Invest &amp; Save</button>
-<button class="finance"><span class="flogo green">TUUNZA<br>MAPATO</span>Tuunza<br>Mapato</button>
-<button class="finance"><span class="flogo red">◆</span>ShiriKaPay</button>
-<button class="finance"><span class="flogo green">MALI</span>Mali</button>
-<button class="finance"><span class="flogo orange">•••</span>Faraja</button>
-<button class="finance"><span class="flogo green">▣</span>M-PESA<br>Ratiba</button>
-</div></section>
 
-<section class="panel entertainment"><h2>Entertainment</h2></section>
-<button class="scan"><span>▦</span>Scan to pay</button>
+  <div class="heading">
+
+    <h2>
+      My Finances
+    </h2>
+
+    <button class="link">
+      View all ›
+    </button>
+
+  </div>
+
+
+  <div class="finance-scroll">
+
+
+    <button class="finance">
+
+      <span class="flogo dark">
+        ZiiDi
+        <small>
+          Trader
+        </small>
+      </span>
+
+      ZiiDi<br>
+      Trader
+
+    </button>
+
+
+    <button class="finance">
+
+      <span class="flogo white">
+        ZiiDi
+      </span>
+
+      ZiiDi<br>
+      Invest &amp; Save
+
+    </button>
+
+
+    <button class="finance">
+
+      <span class="flogo green">
+        TUUNZA<br>
+        MAPATO
+      </span>
+
+      Tuunza<br>
+      Mapato
+
+    </button>
+
+
+    <button class="finance">
+
+      <span class="flogo red">
+        ◆
+      </span>
+
+      ShiriKaPay
+
+    </button>
+
+
+    <button class="finance">
+
+      <span class="flogo green">
+        MALI
+      </span>
+
+      Mali
+
+    </button>
+
+
+    <button class="finance">
+
+      <span class="flogo orange">
+        •••
+      </span>
+
+      Faraja
+
+    </button>
+
+
+    <button class="finance">
+
+      <span class="flogo green">
+        ▣
+      </span>
+
+      M-PESA<br>
+      Ratiba
+
+    </button>
+
+
+  </div>
+
+</section>
+
+
+<!-- ================= ENTERTAINMENT ================= -->
+
+<section class="panel entertainment">
+
+  <h2>
+    Entertainment
+  </h2>
+
+</section>
+
+
+<!-- ================= SCAN BUTTON ================= -->
+
+<button class="scan">
+
+  <span>
+    ▦
+  </span>
+
+  Scan to pay
+
+</button>
+
+
+<!-- TOAST -->
+
 <div id="toast"></div>
+
+
 </div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
 <script src="script.js"></script>
-</body></html>
+
+</body>
+</html>
